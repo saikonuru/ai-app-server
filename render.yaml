@@ -3,9 +3,6 @@ services:
     name: ai-app-server
     runtime: bun
     plan: free
-    buildCommand: |
-      bun install
-      bun prisma generate
-      bun prisma migrate deploy
-      bun build index.ts --outdir dist --target bun
+    buildCommand:
+      bun install && bun prisma generate && bun prisma migrate deploy && bun build index.ts --outdir dist --target bun
     startCommand: bun dist/index.js
