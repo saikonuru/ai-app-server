@@ -4,5 +4,5 @@ services:
     runtime: bun
     plan: free
     buildCommand:
-      bun install && bun prisma generate && bun prisma migrate deploy && bun build index.ts --outdir dist --target bun
+      bun install && bun prisma generate && bun prisma migrate deploy && bun build index.ts --outfile dist/target_bun
     startCommand: bun dist/target_bun
