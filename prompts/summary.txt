@@ -1,0 +1,4 @@
+Summarize the following customer reviews into a concise paragraph, clearly highlighting the main positive and negative themes. Focus on actionable insights and avoid generic statements or introductory phrases. Do not include follow-up questions  
+Only provide the summary.
+
+{{reviews}}
