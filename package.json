@@ -4,9 +4,8 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "bun run build:prisma && bun run build:bun",
-    "build:prisma": "bun prisma generate && bun prisma migrate deploy",
-    "build:bun": "bun build ./index.ts --outdir ./dist",
+    "prepare": "bun prisma generate && bun prisma migrate deploy",
+    "build": "bun build index.ts --outdir dist",
     "start": "bun dist/index.js",
     "dev": "bun --watch index.ts"
   },
