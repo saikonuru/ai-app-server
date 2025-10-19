@@ -2,7 +2,10 @@ services:
   - type: web
     name: ai-app-server
     runtime: bun
-    region: oregon
     plan: free
-    buildCommand: bun run build
-    startCommand: bun run start
+    buildCommand: |
+      bun install
+      bun prisma generate
+      bun prisma migrate deploy
+      bun build index.ts --outdir dist --target bun
+    startCommand: bun dist/index.js
