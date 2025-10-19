@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: ai-app-server
+    runtime: bun
+    region: oregon
+    plan: free
+    buildCommand: |
+      bun install
+      bun prisma generate
+      bun prisma migrate deploy
+      bun build index.ts --outdir dist
+    startCommand: bun dist/index.js
