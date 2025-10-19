@@ -4,11 +4,11 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "start": "bun dist/index.js",
-    "dev": "bun --watch index.ts",
     "build": "bun run build:prisma && bun run build:bun",
     "build:prisma": "bun prisma generate",
-    "build:bun": "bun build ./index.ts --outdir ./dist"
+    "build:bun": "bun build ./index.ts --outdir ./dist",
+    "start": "bun dist/index.js",
+    "dev": "bun --watch index.ts"
   },
   "devDependencies": {
     "@types/bun": "latest",
