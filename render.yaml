@@ -1,8 +1,10 @@
 services:
   - type: web
     name: ai-app-server
-    runtime: bun
-    plan: starter
+    env: node
     buildCommand: |
-      bun install && bun prisma generate && bun prisma migrate deploy
+      runtime: node@22
+      bun install
+      bunx prisma generate
+      bunx prisma migrate deploy
     startCommand: bun run start
