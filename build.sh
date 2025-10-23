@@ -5,10 +5,10 @@ echo "🔧 Installing dependencies..."
 bun install
 
 echo "🧬 Generating Prisma client..."
-bun prisma generate
+bunx prisma generate
 
 echo "📦 Applying Prisma migrations..."
-bun prisma migrate deploy
+bunx prisma migrate deploy
 
 echo "🛠 Building Bun app..."
 bun build index.ts

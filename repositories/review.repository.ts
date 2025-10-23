@@ -1,5 +1,5 @@
-import dayjs from 'dayjs';
-import {PrismaClient, type Review, type Summary} from '../generated/prisma';
+import { PrismaClient, type Review, type Summary } from "@prisma/client";
+import dayjs from "dayjs";
 
 // Singleton PrismaClient instance
 const prisma = new PrismaClient();
@@ -7,8 +7,8 @@ const prisma = new PrismaClient();
 export const reviewRepository = {
   getReviews(productId: number, limit?: number): Promise<Review[]> {
     return prisma.review.findMany({
-      where: {productId},
-      orderBy: {createdAt: 'desc'},
+      where: { productId },
+      orderBy: { createdAt: "desc" },
       take: limit,
     });
   },
@@ -16,7 +16,7 @@ export const reviewRepository = {
   async getReviewSummary(productId: number): Promise<Summary | null> {
     const summary = await prisma.summary.findFirst({
       where: {
-        AND: [{productId}, {expiresAt: {gt: new Date()}}],
+        AND: [{ productId }, { expiresAt: { gt: new Date() } }],
       },
     });
 
@@ -24,7 +24,7 @@ export const reviewRepository = {
   },
   storeReviewsSummary(productId: number, summary: string) {
     const now = new Date();
-    const expiresAt = dayjs().add(7, 'days').toDate();
+    const expiresAt = dayjs().add(7, "days").toDate();
     const data = {
       content: summary,
       expiresAt,
@@ -33,7 +33,7 @@ export const reviewRepository = {
     };
 
     return prisma.summary.upsert({
-      where: {productId},
+      where: { productId },
       create: data,
       update: data,
     });
