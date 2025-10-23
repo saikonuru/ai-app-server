@@ -3,6 +3,5 @@ services:
     name: ai-app-server
     runtime: bun
     plan: starter
-    buildCommand: |
-      bun install && bunx prisma generate && bun prisma migrate deploy
+    buildCommand: bun install
     startCommand: bun run start
