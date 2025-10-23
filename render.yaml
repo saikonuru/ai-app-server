@@ -2,7 +2,7 @@ services:
   - type: web
     name: ai-app-server
     runtime: bun
-    plan: free
+    plan: starter
     buildCommand:
-      bun install && bun prisma generate && bun prisma migrate deploy && bun build index.ts --outfile dist/target_bun
-    startCommand: bun dist/target_bun
+      bun install && bun prisma generate && bun prisma migrate deploy
+    startCommand: bun run start

@@ -11,4 +11,4 @@ echo "📦 Applying Prisma migrations..."
 bun prisma migrate deploy
 
 echo "🛠 Building Bun app..."
-bun build index.ts --outdir dist --target bun
+bun build index.ts
