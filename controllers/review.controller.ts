@@ -16,7 +16,10 @@ export const reviewsController = {
       let summary = await reviewRepository.getReviewSummary(productId);
 
       // Format the existing summary to match the client's expected structure
-      return res.json({summary: summary ? {message: summary.content} : null, reviews});
+      return res.json({
+        summary: summary ? {message: summary.content} : null,
+        reviews,
+      });
     } catch (error) {
       console.error('Failed to fetch reviews:', error);
       res.status(500).json({error: 'Failed to fetch reviews'});

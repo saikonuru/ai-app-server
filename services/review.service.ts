@@ -10,6 +10,7 @@ export const reviewService = {
 
   async summarizeReviews(productId: number, conversationId: string): Promise<ChatResponse> {
     const existingSummary = await reviewRepository.getReviewSummary(productId);
+
     if (existingSummary) {
       return {id: 'cached-summary', message: existingSummary.content};
     }
@@ -23,7 +24,10 @@ export const reviewService = {
 
     const system_prompt = conversationRepository.getInstructions(ConversationType.Review);
     if (!system_prompt) {
-      return {id: 'no-template', message: 'No template found for review summary.'};
+      return {
+        id: 'no-template',
+        message: 'No template found for review summary.',
+      };
     }
     //const prompt = template.replace('{{reviews}}', joinedReviews);
     const response = await llmClient.summarizeReviews(system_prompt, joinedReviews);
