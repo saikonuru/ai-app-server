@@ -1,4 +1,4 @@
-import cors, {type CorsOptions} from 'cors';
+import cors, {CorsOptions} from 'cors';
 import dotenv from 'dotenv';
 import express from 'express';
 import router from './routes';
